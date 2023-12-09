@@ -1,0 +1,7 @@
+C:\Users\harry\source\repos\Graphite\Graphite\bin\Debug\Graphite.exe.config
+C:\Users\harry\source\repos\Graphite\Graphite\bin\Debug\Graphite.exe
+C:\Users\harry\source\repos\Graphite\Graphite\bin\Debug\Graphite.pdb
+C:\Users\harry\source\repos\Graphite\Graphite\obj\Debug\Graphite.csproj.AssemblyReference.cache
+C:\Users\harry\source\repos\Graphite\Graphite\obj\Debug\Graphite.csproj.CoreCompileInputs.cache
+C:\Users\harry\source\repos\Graphite\Graphite\obj\Debug\Graphite.exe
+C:\Users\harry\source\repos\Graphite\Graphite\obj\Debug\Graphite.pdb
