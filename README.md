@@ -5,7 +5,7 @@
 
   # Graphite
 
-  Graphite is an open source, basic package management tool that lets you get, create and remove web packages.
+  Graphite is an open source, basic package management tool that lets you get, create and remove static and dynamic packages.
 </div>
 
 > [!IMPORTANT]
