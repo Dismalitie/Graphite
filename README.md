@@ -1,6 +1,7 @@
 <div align="center">
   
-  ![graphite](https://github.com/Dismalitie/Graphite/assets/118924562/05514801-ae04-48e6-81c3-f95e3d0f5c61)
+  ![graphite](https://github.com/Dismalitie/Graphite/assets/118924562/66f4a364-4a02-401e-938c-639461e161fc)
+
 
 
 
