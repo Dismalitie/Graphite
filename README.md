@@ -11,6 +11,10 @@
 > [!IMPORTANT]
 > Graphite is under development, stable builds will be released in the [releases tab](https://github.com/Dismalitie/Graphite/releases).
 
+
+> [!WARNING]
+> Graphite has updated it's legacy GIHs to use the `.gih` file extension. Any existing indexes will still be supported.
+
 # Getting a static package
 
 ```
