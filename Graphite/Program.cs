@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.IO.Compression;
 
 namespace Graphite
@@ -10,18 +9,45 @@ namespace Graphite
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
+            ///<summary>
+            /// dyn :: dynamic
+            /// sta :: static
+            /// g2  :: graphite 2 / gen 2
+            /// gih :: graphite hive installer
+            /// </summary>
+
+            if (args.Length == 0) // detect for args
             {
                 Console.WriteLine("No args! Run \"graphite help\" for more info");
                 return;
             }
 
-            Console.Write("\r\n█▀▀ █▀█ ▄▀█ █▀█ █░█ █ ▀█▀ █▀▀\r\n█▄█ █▀▄ █▀█ █▀▀ █▀█ █ ░█░ ██▄\n");
+            Console.Write("\r\n█▀▀ █▀█ ▄▀█ █▀█ █░█ █ ▀█▀ █▀▀\r\n█▄█ █▀▄ █▀█ █▀▀ █▀█ █ ░█░ ██▄\n"); // splash screen text
             Console.WriteLine("Batch Package Installer\n");
 
-            if (args[0] == "get")
+            if (args[0] == "help")
             {
-                if (args.Length < 2)
+                Console.WriteLine("get [ pack ] [ destination ]");
+                Console.WriteLine("   Locates the index file at the specified URL (pack) and downloads all files to destination.\n");
+                Console.WriteLine("del [ pack ] [ destination ]");
+                Console.WriteLine("   Locates the index file at the specified URL (pack) and removes all local files included in the index at destination.\n");
+                Console.WriteLine("netdel [ path ] [ destination ]");
+                Console.WriteLine("   Removes all files at destination included in the .npkg located at path.\n");
+                Console.WriteLine("index [ path ] [ destination ]");
+                Console.WriteLine("   Indexes path, creating a new Graphite Installation Hive at destination\n");
+                Console.WriteLine("pack [ dir ] [ packname ] [ destination ]");
+                Console.WriteLine("   Creates a new static .gpkg file at destination with the package included.\n");
+                Console.WriteLine("netpack [ path ] [ packname ] [ destination ]");
+                Console.WriteLine("   Creates a new dynamic .npkg pack from path at destination that will always extract the latest copy.\n");
+                Console.WriteLine("unpack [ dir ] [ destination ]");
+                Console.WriteLine("   Unpacks the static .gpkg file at dir to the destination.\n");
+                Console.WriteLine("netunpack [ path ] [ destination ]");
+                Console.WriteLine("   Extracts the dynamic .npkg from path to destination.\n");
+            }
+
+            if (args[0] == "get") // legacy gih get sys, dyn
+            {
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("get [ pack ] [ destination ]");
@@ -53,9 +79,9 @@ namespace Graphite
                 Console.WriteLine("Packages processed");
             }
 
-            if (args[0] == "del")
+            if (args[0] == "del") // legacy del, dyn
             {
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("del [ pack ] [ destination ]");
@@ -86,9 +112,9 @@ namespace Graphite
                 Console.WriteLine("Packages removed");
             }
 
-            if (args[0] == "index")
+            if (args[0] == "index") // legacy index for gih sys, dyn
             {
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("index [ path ] [ destination ]");
@@ -115,29 +141,9 @@ namespace Graphite
                 }
             }
 
-            if (args[0] == "help")
+            if (args[0] == "pack") // g2 packing, dir > zip, sta
             {
-                Console.WriteLine("get [ pack ] [ destination ]");
-                Console.WriteLine("   Locates the index file at the specified URL (pack) and downloads all files to destination.\n");
-                Console.WriteLine("del [ pack ] [ destination ]");
-                Console.WriteLine("   Locates the index file at the specified URL (pack) and removes all local files included in the index at destination.\n");
-                Console.WriteLine("netdel [ path ] [ destination ]");
-                Console.WriteLine("   Removes all files at destination included in the .npkg located at path.\n");
-                Console.WriteLine("index [ path ] [ destination ]");
-                Console.WriteLine("   Indexes path, creating a new Graphite Installation Hive at destination\n");
-                Console.WriteLine("pack [ dir ] [ packname ] [ destination ]");
-                Console.WriteLine("   Creates a new static .gpkg file at destination with the package included.\n");
-                Console.WriteLine("netpack [ path ] [ packname ] [ destination ]");
-                Console.WriteLine("   Creates a new dynamic .npkg pack from path at destination that will always extract the latest copy.\n");
-                Console.WriteLine("unpack [ dir ] [ destination ]");
-                Console.WriteLine("   Unpacks the static .gpkg file at dir to the destination.\n");
-                Console.WriteLine("netunpack [ path ] [ destination ]");
-                Console.WriteLine("   Extracts the dynamic .npkg from path to destination.\n");
-            }
-
-            if (args[0] == "pack")
-            {
-                if (args.Length < 3)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("pack [ dir ] [ packname ] [ destination ]");
@@ -150,9 +156,9 @@ namespace Graphite
                 Console.WriteLine("Created new .gpkg file at \"" + args[3] + ".gpkg" + "\"");
             }
 
-            if (args[0] == "unpack")
+            if (args[0] == "unpack") // g2 unpacking, zip > dir, sta
             {
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("unpack [ dir ] [ destination ]");
@@ -164,9 +170,9 @@ namespace Graphite
                 Console.WriteLine("Unpacked \"" + args[1] + "\" to \"" + Environment.CurrentDirectory + "\\" + Path.GetFileNameWithoutExtension(args[1]) + "\"");
             }
 
-            if (args[0] == "netpack")
+            if (args[0] == "netpack") // g2 index, dyn
             {
-                if (args.Length < 3)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netpack [ path ] [ packname ] [ destination ]");
@@ -188,9 +194,9 @@ namespace Graphite
                 File.Move(args[2] + ".npkg", args[3]);
             }
 
-            if (args[0] == "netunpack")
+            if (args[0] == "netunpack") // g2 get, dyn
             {
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netunpack [ path ] [ destination ]");
@@ -229,9 +235,9 @@ namespace Graphite
                 Console.WriteLine("Packages processed");
             }
 
-            if (args[0] == "netdel")
+            if (args[0] == "netdel") // g2 del, dyn
             {
-                if (args.Length < 2)
+                if (args.Length != 2)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netdel [ path ] [ destination ]");
