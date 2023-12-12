@@ -28,7 +28,7 @@ namespace Graphite
             }
 
             Console.Write("\r\n█▀▀ █▀█ ▄▀█ █▀█ █░█ █ ▀█▀ █▀▀\r\n█▄█ █▀▄ █▀█ █▀▀ █▀█ █ ░█░ ██▄\n"); // splash screen text
-            Console.WriteLine("Batch Package Installer\n");
+            Console.WriteLine("Package System\n");
 
             if (args[0] == "help")
             {
@@ -48,6 +48,8 @@ namespace Graphite
                 Console.WriteLine("   Unpacks the static .gpkg file at dir to the destination.\n");
                 Console.WriteLine("netunpack [ path ] [ destination ]");
                 Console.WriteLine("   Extracts the dynamic .npkg from path to destination.\n");
+                Console.WriteLine("update");
+                Console.WriteLine("   Updates and reloads Graphite.\n");
                 return;
             }
 
@@ -285,10 +287,12 @@ namespace Graphite
                 return;
             }
 
-            if (args[0] == "update")
+            if (args[0] == "update") // net update with Grpahite-WebUpdateService
             {
                 WebClient wc = new WebClient();
+                Console.WriteLine("Getting Update Service...");
                 wc.DownloadFile("https://github.com/Dismalitie/Graphite/raw/main/Graphite-WebUpdateService/bin/Debug/Graphite-WebUpdateService.exe", ".\\updateService.exe");
+                Console.WriteLine("Starting Update Service...");
                 System.Diagnostics.Process.Start(".\\updateService.exe");
                 return;
             }
