@@ -47,7 +47,7 @@ namespace Graphite
 
             if (args[0] == "get") // legacy gih get sys, dyn
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("get [ pack ] [ destination ]");
@@ -81,7 +81,7 @@ namespace Graphite
 
             if (args[0] == "del") // legacy del, dyn
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("del [ pack ] [ destination ]");
@@ -114,7 +114,7 @@ namespace Graphite
 
             if (args[0] == "index") // legacy index for gih sys, dyn
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("index [ path ] [ destination ]");
@@ -143,7 +143,7 @@ namespace Graphite
 
             if (args[0] == "pack") // g2 packing, dir > zip, sta
             {
-                if (args.Length != 3)
+                if (args.Length != 4)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("pack [ dir ] [ packname ] [ destination ]");
@@ -158,7 +158,7 @@ namespace Graphite
 
             if (args[0] == "unpack") // g2 unpacking, zip > dir, sta
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("unpack [ dir ] [ destination ]");
@@ -172,7 +172,7 @@ namespace Graphite
 
             if (args[0] == "netpack") // g2 index, dyn
             {
-                if (args.Length != 3)
+                if (args.Length != 4)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netpack [ path ] [ packname ] [ destination ]");
@@ -196,7 +196,7 @@ namespace Graphite
 
             if (args[0] == "netunpack") // g2 get, dyn
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netunpack [ path ] [ destination ]");
@@ -237,7 +237,7 @@ namespace Graphite
 
             if (args[0] == "netdel") // g2 del, dyn
             {
-                if (args.Length != 2)
+                if (args.Length != 3)
                 {
                     Console.WriteLine("Supply args!");
                     Console.WriteLine("netdel [ path ] [ destination ]");
