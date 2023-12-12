@@ -16,6 +16,11 @@ namespace Graphite
             /// gih :: graphite hive installer
             /// </summary>
 
+            if (File.Exists(".\\updateService.exe"))
+            {
+                File.Delete(".\\updateService.exe");
+            }
+
             if (args.Length == 0) // detect for args
             {
                 Console.WriteLine("No args! Run \"graphite help\" for more info");
@@ -277,6 +282,14 @@ namespace Graphite
                     Console.WriteLine("\"" + line + "\" removed\n");
                 }
                 Console.WriteLine("Packages removed");
+                return;
+            }
+
+            if (args[0] == "update")
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadFile("https://github.com/Dismalitie/Graphite/raw/main/Graphite-WebUpdateService/bin/Debug/Graphite-WebUpdateService.exe", ".\\updateService.exe");
+                System.Diagnostics.Process.Start(".\\updateService.exe");
                 return;
             }
         }

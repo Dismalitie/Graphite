@@ -1,5 +1,4 @@
 ﻿using System.Net;
-
 namespace Graphite_WebUpdateService
 {
     internal class Program
