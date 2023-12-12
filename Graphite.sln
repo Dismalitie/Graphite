@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphite", "Graphite\Graphite.csproj", "{23827968-BD0D-404C-85CD-41D28DA74935}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphite-WebUpdateService", "Graphite-WebUpdateService\Graphite-WebUpdateService.csproj", "{14A17BCE-8CFF-4A65-A6F2-35B172BFF56D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{23827968-BD0D-404C-85CD-41D28DA74935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23827968-BD0D-404C-85CD-41D28DA74935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23827968-BD0D-404C-85CD-41D28DA74935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A17BCE-8CFF-4A65-A6F2-35B172BFF56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A17BCE-8CFF-4A65-A6F2-35B172BFF56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A17BCE-8CFF-4A65-A6F2-35B172BFF56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A17BCE-8CFF-4A65-A6F2-35B172BFF56D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

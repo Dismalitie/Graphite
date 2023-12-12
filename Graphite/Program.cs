@@ -43,6 +43,7 @@ namespace Graphite
                 Console.WriteLine("   Unpacks the static .gpkg file at dir to the destination.\n");
                 Console.WriteLine("netunpack [ path ] [ destination ]");
                 Console.WriteLine("   Extracts the dynamic .npkg from path to destination.\n");
+                return;
             }
 
             if (args[0] == "get") // legacy gih get sys, dyn
@@ -77,6 +78,7 @@ namespace Graphite
                     Console.WriteLine("\"" + line + "\" processed\n");
                 }
                 Console.WriteLine("Packages processed");
+                return;
             }
 
             if (args[0] == "del") // legacy del, dyn
@@ -110,6 +112,7 @@ namespace Graphite
                     Console.WriteLine("\"" + line + "\" removed\n");
                 }
                 Console.WriteLine("Packages removed");
+                return;
             }
 
             if (args[0] == "index") // legacy index for gih sys, dyn
@@ -122,7 +125,7 @@ namespace Graphite
                     return;
                 }
 
-                try
+                try // error prone, so try-catch
                 {
                     string[] files = Directory.GetFiles(args[1]);
                     using (StreamWriter sw = new StreamWriter(args[2] + "\\graphite.gih"))
@@ -139,6 +142,7 @@ namespace Graphite
                 {
                     Console.WriteLine("Error: " + ex.Message);
                 }
+                return;
             }
 
             if (args[0] == "pack") // g2 packing, dir > zip, sta
@@ -154,6 +158,7 @@ namespace Graphite
                 ZipFile.CreateFromDirectory(args[1], args[2] + ".gpkg");
                 File.Move(args[2], args[3]);
                 Console.WriteLine("Created new .gpkg file at \"" + args[3] + ".gpkg" + "\"");
+                return;
             }
 
             if (args[0] == "unpack") // g2 unpacking, zip > dir, sta
@@ -168,6 +173,7 @@ namespace Graphite
 
                 ZipFile.ExtractToDirectory(args[1], args[2]);
                 Console.WriteLine("Unpacked \"" + args[1] + "\" to \"" + Environment.CurrentDirectory + "\\" + Path.GetFileNameWithoutExtension(args[1]) + "\"");
+                return;
             }
 
             if (args[0] == "netpack") // g2 index, dyn
@@ -192,6 +198,7 @@ namespace Graphite
                 File.Delete(args[2] + ".tmp");
                 Console.WriteLine("Compressed");
                 File.Move(args[2] + ".npkg", args[3]);
+                return;
             }
 
             if (args[0] == "netunpack") // g2 get, dyn
@@ -233,6 +240,7 @@ namespace Graphite
                 }
                 File.Delete(args[1] + ".tmp");
                 Console.WriteLine("Packages processed");
+                return;
             }
 
             if (args[0] == "netdel") // g2 del, dyn
@@ -269,6 +277,7 @@ namespace Graphite
                     Console.WriteLine("\"" + line + "\" removed\n");
                 }
                 Console.WriteLine("Packages removed");
+                return;
             }
         }
     }

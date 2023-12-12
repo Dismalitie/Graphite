@@ -1,0 +1,7 @@
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\bin\Debug\Graphite-WebUpdateService.exe.config
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\bin\Debug\Graphite-WebUpdateService.exe
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\bin\Debug\Graphite-WebUpdateService.pdb
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\obj\Debug\Graphite-WebUpdateService.csproj.AssemblyReference.cache
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\obj\Debug\Graphite-WebUpdateService.csproj.CoreCompileInputs.cache
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\obj\Debug\Graphite-WebUpdateService.exe
+C:\Users\harry\source\repos\Graphite\Graphite-WebUpdateService\obj\Debug\Graphite-WebUpdateService.pdb
