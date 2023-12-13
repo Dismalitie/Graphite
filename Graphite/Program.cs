@@ -27,8 +27,8 @@ namespace Graphite
                 return;
             }
 
-            Console.Write("\r\n█▀▀ █▀█ ▄▀█ █▀█ █░█ █ ▀█▀ █▀▀\r\n█▄█ █▀▄ █▀█ █▀▀ █▀█ █ ░█░ ██▄\n"); // splash screen text
-            Console.WriteLine("Package System\n");
+            Funcs f = new Funcs();
+            WebClient wc = new WebClient();
 
             if (args[0] == "help")
             {
@@ -50,6 +50,8 @@ namespace Graphite
                 Console.WriteLine("   Extracts the dynamic .npkg from path to destination.\n");
                 Console.WriteLine("update");
                 Console.WriteLine("   Updates and reloads Graphite.\n");
+                Console.WriteLine("info");
+                Console.WriteLine("   Displays info about Graphite.\n");
                 return;
             }
 
@@ -63,7 +65,6 @@ namespace Graphite
                     return;
                 }
 
-                WebClient wc = new WebClient();
                 string indexfile = args[1];
                 Console.WriteLine("Pulling index...\n");
                 string[] assets = null;
@@ -98,7 +99,6 @@ namespace Graphite
                     return;
                 }
 
-                WebClient wc = new WebClient();
                 string indexfile = args[1];
                 Console.WriteLine("Pulling index...\n");
                 string[] assets = null;
@@ -193,7 +193,6 @@ namespace Graphite
                     return;
                 }
 
-                Funcs f = new Funcs();
                 Console.WriteLine("Writing address...");
                 StreamWriter sw = new StreamWriter(args[2] + ".tmp");
                 sw.Write(args[1]);
@@ -218,13 +217,11 @@ namespace Graphite
                     return;
                 }
 
-                Funcs f = new Funcs();
                 Console.WriteLine("Decompressing .npkg file...");
                 f.DecompressFileGZip(args[1], Path.GetFileNameWithoutExtension(args[1]) + ".tmp");
                 string url = File.ReadAllText(Path.GetFileNameWithoutExtension(args[1]) + ".tmp");
                 Console.WriteLine("Decompressed");
 
-                WebClient wc = new WebClient();
                 string indexfile = url;
                 Console.WriteLine("Pulling index...\n");
                 string[] assets = null;
@@ -260,10 +257,8 @@ namespace Graphite
                     return;
                 }
 
-                Funcs f = new Funcs();
                 f.DecompressFileGZip(args[1], Environment.CurrentDirectory + "\\" + Path.GetFileNameWithoutExtension(args[1]) + ".tmp");
 
-                WebClient wc = new WebClient();
                 string indexfile = File.ReadAllText(Path.GetFileNameWithoutExtension(args[1]) + ".tmp");
                 Console.WriteLine("Pulling index...\n");
                 string[] assets = null;
@@ -289,12 +284,16 @@ namespace Graphite
 
             if (args[0] == "update") // net update with Grpahite-WebUpdateService
             {
-                WebClient wc = new WebClient();
                 Console.WriteLine("Getting Update Service...");
                 wc.DownloadFile("https://github.com/Dismalitie/Graphite/raw/main/Graphite-WebUpdateService/bin/Debug/Graphite-WebUpdateService.exe", ".\\updateService.exe");
                 Console.WriteLine("Starting Update Service...");
                 System.Diagnostics.Process.Start(".\\updateService.exe");
                 return;
+            }
+
+            if (args[0] == "info")
+            {
+                Console.Write("Graphite is an open source, basic package management tool that lets you get, create and remove static and dynamic packages.");
             }
         }
     }

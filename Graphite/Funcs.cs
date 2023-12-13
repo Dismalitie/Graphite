@@ -1,5 +1,6 @@
 ﻿using System.IO.Compression;
 using System.IO;
+using System;
 
 namespace Graphite
 {

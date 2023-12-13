@@ -8,6 +8,7 @@ namespace Graphite_WebUpdateService
             // https://raw.githubusercontent.com/Dismalitie/Graphite/main/Graphite/bin/Debug/graphite.exe
             WebClient wc = new WebClient();
             wc.DownloadFile("https://raw.githubusercontent.com/Dismalitie/Graphite/main/Graphite/bin/Debug/graphite.exe", ".\\graphite.exe");
+            System.Diagnostics.Process.Start(".\\graphite.exe"); // removes update service
         }
     }
 }
