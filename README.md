@@ -15,6 +15,11 @@
 > [!WARNING]
 > Graphite has updated it's legacy GIHs to use the `.gih` file extension. Any existing indexes will still be supported.
 
+Update with
+```
+graphite update
+```
+
 # Getting a static package
 
 ```
